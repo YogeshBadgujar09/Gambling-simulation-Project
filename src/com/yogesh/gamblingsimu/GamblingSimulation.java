@@ -24,35 +24,43 @@ public class GamblingSimulation {
 		
 		System.out.println("----------------------------------");
 	}
-	
-	public static void gamePlay()
-	{
-		Random random =  new Random();
-		int make_bet = random.nextInt(9)%2;
-		
-		if(make_bet == LOOSE)
-		{
-			System.out.println("Loose");
-			looseStack += 1 ; 
+	 
+		public static void gamePlay(){
+			
+			while(true) {
+				
+				gameStatus();
+				
+				Random random =  new Random();
+				int make_bet = random.nextInt(9)%2;
+				
+				if(make_bet == LOOSE){
+					System.out.println("Loose");
+					looseStack += 1 ; 
+				}
+				else{
+					System.out.println("Win");
+					winStack += 1;
+				}
+				
+				
+				if(winStack == 50) {
+					break ;
+				}
+				if(looseStack == 50) {
+					break ;
+				}
+			}
 		}
-		else
-		{
-			System.out.println("Win");
-			winStack += 1;
-		}
-		
-		
-	}
-	
 	
 	public static void main(String[] args) {
 		
 		System.out.println("Welcome to Gambling Simulating Project");
-		gameStatus();
+		
 		gamePlay();
 		gameStatus();
 		
-}
+	}
 	
 }
 
