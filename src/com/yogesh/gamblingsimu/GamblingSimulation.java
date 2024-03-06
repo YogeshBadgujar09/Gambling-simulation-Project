@@ -6,19 +6,21 @@ public class GamblingSimulation {
 		
 	private static final int EVERY_DAY_STACK = 100 ;
 	private static final int PER_GAME_STACK = 1 ;
-	
 	private static final int LOOSE = 0;
 	private static final int WIN = 1 ;
 	private static final int MONTHLY_DAYS = 20 ;
+	
+	
 	private static int[] perDay_Winning_Amount = new int[20] ;
 	private static int[] perDay_Loosing_Amount = new int[20] ;
+	private static int winningDays_InMonth = 0 ;
+	private static int loosingDays_InMonth = 0 ;
 	 
 	
 	public static void gameStatus()
 	{
 		System.out.println("Every Day Stack :" + EVERY_DAY_STACK );
 		System.out.println("Stack Per Game :" + PER_GAME_STACK );	
-		
 	}
 	 
 		public static void gamePlay(){
@@ -43,9 +45,11 @@ public class GamblingSimulation {
 							winStack += 1;
 						}
 						if(winStack == 50) {
+							winningDays_InMonth ++;
 							break ;
 						}
 						if(looseStack == 50) {
+							loosingDays_InMonth ++ ;
 							break ;
 						}
 					
@@ -57,8 +61,9 @@ public class GamblingSimulation {
 					System.out.println("Loose stack :" + looseStack);
 					System.out.println("----------------------------------");
 			}
-		  
-		}
+			System.out.println("Winning Days in Month :" + winningDays_InMonth);
+			System.out.println("Loosing Days in Month :" + loosingDays_InMonth);
+	}
 		
 		 
 			
