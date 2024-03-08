@@ -15,7 +15,7 @@ public class GamblingSimulation {
 	private static int[] perDay_Loosing_Amount = new int[20] ;
 	private static int winningDays_InMonth = 0 ;
 	private static int loosingDays_InMonth = 0 ;
-	 
+	private static int WinStatus[] = new int[ MONTHLY_DAYS ];	
 	
 	public static void gameStatus()
 	{
@@ -26,7 +26,7 @@ public class GamblingSimulation {
 		public static void gamePlay(){
 			
 			for(int i = 0 ; i < MONTHLY_DAYS ; i++ ) {
-				
+					
 				System.out.println("Day :" + (i+1));
 				gameStatus();
 				
@@ -59,11 +59,31 @@ public class GamblingSimulation {
 					perDay_Loosing_Amount[i] = looseStack ;
 					System.out.println("Win stack :" + winStack);
 					System.out.println("Loose stack :" + looseStack);
+					
+					
 					System.out.println("----------------------------------");
 			}
 			System.out.println("Winning Days in Month :" + winningDays_InMonth);
-			System.out.println("Loosing Days in Month :" + loosingDays_InMonth);
-	}
+			System.out.println("Loosing Days in Month :" + loosingDays_InMonth); 
+			
+			int luckist_day = WinStatus[0] ;
+			int unluckist_day = WinStatus[0] ;
+			
+			for ( int i=0 ; i<  MONTHLY_DAYS ;i++) {				
+				WinStatus[i] = perDay_Winning_Amount[i] - perDay_Loosing_Amount[i] ;
+				//System.out.println("Winning Status of Day "+(i+1) + " :\t" + WinStatus[i]);
+				if(WinStatus[i] > luckist_day)
+				{
+					luckist_day = WinStatus[i] ; 
+				}
+				if(WinStatus[i] < unluckist_day)
+				{
+					unluckist_day = WinStatus[i] ; 
+				}
+			}
+			System.out.println("Luckiest Day Winning  : " + luckist_day);
+			System.out.println("Unuckiest Day Winning : " + unluckist_day);
+		}
 		
 		 
 			
