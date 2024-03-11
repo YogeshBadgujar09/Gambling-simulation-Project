@@ -15,10 +15,7 @@ public class GamblingSimulation {
 	private static int winningDays_InMonth = 0 ;
 	private static int loosingDays_InMonth = 0 ;
 	private static int WinStatus[] = new int[ MONTHLY_DAYS ];
-	private static final int RESIGN_ON_PERCENTAGE_OF_PERDAY_STACK = 50 ;
-	private static int resign_on_win = RESIGN_ON_PERCENTAGE_OF_PERDAY_STACK * EVERY_DAY_STACK / 100;
-	private static int resign_on_loose = RESIGN_ON_PERCENTAGE_OF_PERDAY_STACK * EVERY_DAY_STACK /100 ;
-	
+	 
 	public static void gameStatus()
 	{
 		System.out.println("Every Day Stack :" + EVERY_DAY_STACK );
@@ -51,12 +48,12 @@ public class GamblingSimulation {
 								winStack += PER_GAME_STACK ;
 								}
 							
-								if(winStack == resign_on_win) {
+								if(winStack == EVERY_DAY_STACK / 2) {
 										winningDays_InMonth ++;
 										break ;
 								}
 								
-								if(looseStack == resign_on_loose) {
+								if(looseStack == EVERY_DAY_STACK / 2 ) {
 									loosingDays_InMonth ++ ;
 									break ;
 								}
